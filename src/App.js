@@ -8,35 +8,22 @@ import './App.css';
 
 import logo from './logo.svg';
 
-const maxTries = 4;
-
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      tries: maxTries,
+      testLength: 1,
+      step: 1,
+      points: 0,
       status: 'testing',
       solution: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       problem: SignUtils.problem()
     };
   }
 
-  setTries(newTries) {
-    if (newTries < 0) {
-      newTries = 0;
-    } else if (newTries > maxTries) {
-      newTries = maxTries;
-    }
-    this.setState({ tries: newTries });
-  }
-
   checkSolution(answer) {
     const problem = this.state.problem[2];
-    if (SignUtils.checkAnswer(...problem, answer)) {
-      this.setState({ status: 'solved' });
-    } else {
-      this.setState({ status: 'failed' });
-    }
+    return SignUtils.checkAnswer(...problem, answer);
   }
 
   toggleFullScreen() {
@@ -44,10 +31,34 @@ class App extends Component {
       Screenfull.toggle();
     }
   }
+  setSolution(solution) {
+    this.setState({ solution });
+  }
+
+  stepProblem(answer) {
+    let { step, testLength, problem, points, status } = this.state;
+    const correct = SignUtils.checkAnswer(...problem[2], answer);
+
+    if (correct) {
+      points++;
+    }
+    if (step >= testLength) {
+      if (points / testLength > 0.5) {
+        status = 'solved';
+      } else {
+        status = 'failed';
+      }
+    }
+    step++;
+    problem = SignUtils.problem();
+    const solution = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    this.setState({ step, problem, points, status, solution });
+  }
 
   reset() {
     const newState = {
-      tries: maxTries,
+      step: 1,
+      points: 0,
       status: 'testing',
       solution: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       problem: SignUtils.problem()
@@ -56,8 +67,9 @@ class App extends Component {
   }
 
   render() {
-    const { solution, problem, tries, status } = this.state;
-    const checkSolution = this.checkSolution.bind(this);
+    const { solution, problem, step, status, testLength } = this.state;
+    const checkSolution = this.stepProblem.bind(this);
+    const setSolution = this.setSolution.bind(this);
     let component;
     switch (status) {
       case 'testing':
@@ -66,9 +78,10 @@ class App extends Component {
             {...{
               solution,
               problem,
-              tries,
-              maxTries,
-              checkSolution
+              step,
+              checkSolution,
+              setSolution,
+              testLength
             }}
           />
         );

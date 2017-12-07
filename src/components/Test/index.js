@@ -6,14 +6,23 @@ import Solution from './Solution';
 
 class LockScreen extends Component {
   render() {
-    const { problem, solution, tries, maxTries, checkSolution } = this.props;
+    const {
+      problem,
+      solution,
+      step,
+      checkSolution,
+      setSolution,
+      testLength
+    } = this.props;
     return (
       <div className="LockScreen">
         <section className="LockScreen-problem">
           <Problem problem={problem} />
         </section>
         <section className="LockScreen-solution">
-          <Solution {...{ solution, tries, maxTries, checkSolution }} />
+          <Solution
+            {...{ solution, step, testLength, checkSolution, setSolution }}
+          />
         </section>
       </div>
     );

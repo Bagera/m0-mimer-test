@@ -5,37 +5,40 @@ import Counter from './Counter';
 import Buttons from './Buttons';
 
 class Solution extends Component {
-  constructor() {
-    super();
-    this.state = {
-      solution: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    };
-  }
-  toggleButton(index) {
-    let solution = this.state.solution;
+  handleToggle(index) {
+    let solution = this.props.solution;
     solution[index] = Math.abs(solution[index] - 1);
-    this.setState(solution);
+    this.props.setSolution(solution);
   }
 
   render() {
-    const { tries, maxTries, checkSolution } = this.props;
-    const { solution } = this.state;
+    const { step, testLength, solution, checkSolution } = this.props;
+
+    let counter = null;
+
+    if (testLength > 1) {
+      counter = (
+        <div className="Solution-counter">
+          <Counter {...{ step, testLength }} />
+        </div>
+      );
+    }
     return (
       <div className="Solution">
-        {/* <div className="Solution-counter">
-          <Counter {...{ tries, maxTries }} />
-        </div> */}
         <div className="Solution-buttons">
           <Buttons
             solution={solution}
-            toggleButton={this.toggleButton.bind(this)}
+            toggleBar={this.handleToggle.bind(this)}
           />
         </div>
-        <div className="Solution-action">
-          <button type="button" onClick={checkSolution.bind(this, solution)}>
-            Svara
-          </button>
-        </div>
+        <aside className="Solution-aside">
+          {counter}
+          <div className="Solution-action">
+            <button type="button" onClick={checkSolution.bind(this, solution)}>
+              Svara
+            </button>
+          </div>
+        </aside>
       </div>
     );
   }

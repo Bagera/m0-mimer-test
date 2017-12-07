@@ -1,8 +1,8 @@
 .LockScreen {
   display: grid;
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: auto auto;
   grid-template-rows: 1fr;
-  grid-gap: 2em;
+  grid-gap: 4em;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -15,7 +15,8 @@
 
 @media (orientation: portrait) {
   .LockScreen {
-    grid-template-rows: 3fr 2fr;
+    grid-gap: 2em;
+    grid-template-rows: auto auto;
     grid-template-columns: 1fr;
   }
 }

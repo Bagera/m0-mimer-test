@@ -1,20 +1,10 @@
 import React, { Component } from 'react';
 import './Counter.css';
 
-const brandColor = 'rgb(95, 155, 170)';
-
-const colors = [
-  'rgb(182, 0, 0)',
-  'rgb(182, 0, 0)',
-  'rgb(182, 118, 0)',
-  'rgb(0, 182, 97)',
-  brandColor
-];
-
 class Counter extends Component {
   render() {
-    const { tries, maxTries } = this.props;
-    const part = tries / maxTries;
+    const { step, testLength } = this.props;
+    const part = step / testLength;
     const radius = 100;
     const strWidth = 8;
     const circumference = 2 * (radius - strWidth) * Math.PI;
@@ -23,13 +13,10 @@ class Counter extends Component {
       strokeWidth: strWidth
     };
     const progressStyle = {
-      stroke: colors[tries],
       strokeWidth: strWidth,
-      strokeDasharray: `0, ${(1 - part) * circumference}, ${part *
-        circumference}`
+      strokeDasharray: ` ${part * circumference}, ${(1 - part) * circumference}`
     };
     const circleStyle = {
-      fill: colors[tries],
       filter: 'blur(strWidth * 3)'
     };
 
@@ -71,7 +58,7 @@ class Counter extends Component {
           filter="url(#svgBlur)"
         />
         <text x="50%" y="50%" dy="0.33em" className="Counter-text">
-          {tries}
+          {step}
         </text>
       </svg>
     );

@@ -20,6 +20,10 @@
 }
 html {
   box-sizing: border-box;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-size: var(--root-font);
 }
 *,
 *:before,
@@ -28,19 +32,24 @@ html {
 }
 
 body {
+  font-size: 1em;
   padding: 0;
   margin: 0;
-  font-size: var(--root-font);
   background: linear-gradient(180deg, var(--c-brand-li), var(--c-brand-da));
 }
-
+body,
+#root,
+.App {
+  height: 100%;
+  width: 100%;
+  height: 100%;
+  width: 100%;
+}
 .App {
   text-align: center;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 48px 1fr;
-  height: 100vh;
-  width: 100vw;
+  grid-template-rows: 32px 1fr;
 }
 
 .App-header {
@@ -70,9 +79,10 @@ body {
     --root-font: 1vh;
   }
 }
-@media screen and (min-width: 768px) {
-  body {
-    font-size: 1.5vw;
+
+@media screen and (min-width: 600px) {
+  .App {
+    grid-template-rows: 48px 1fr;
   }
 }
 

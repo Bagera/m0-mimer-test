@@ -5,10 +5,10 @@ import Sign from './Sign';
 
 class Buttons extends Component {
   render() {
-    const { solution, toggleButton } = this.props;
+    const { solution, toggleBar } = this.props;
     return (
       <div className="Buttons">
-        <Sign state={solution} barClick={toggleButton} />
+        <Sign state={solution} barClick={toggleBar} />
       </div>
     );
   }

@@ -1,6 +1,5 @@
 .Problem {
-  --f-size: 1.5em;
-  font-size: var(--f-size);
+  font-size: 1.5em;
   margin: auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -17,13 +16,8 @@
   background-color: rgba(0, 0, 0, 0.25);
 }
 
-@media (min-width: 768px) {
-  .Problem {
-    --f-size: 0.8em;
-  }
-}
 @media (min-width: 1024px) {
   .Problem {
-    --f-size: 0.625em;
+    font-size: 0.7em;
   }
 }
