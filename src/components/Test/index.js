@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import './LockScreen.css';
+import './Test.css';
 
 import Problem from './Problem';
 import Solution from './Solution';
 
-class LockScreen extends Component {
+class Test extends Component {
   render() {
     const {
       problem,
@@ -15,11 +15,11 @@ class LockScreen extends Component {
       testLength
     } = this.props;
     return (
-      <div className="LockScreen">
-        <section className="LockScreen-problem">
+      <div className="Test">
+        <section className="Test-problem">
           <Problem problem={problem} />
         </section>
-        <section className="LockScreen-solution">
+        <section className="Test-solution">
           <Solution
             {...{ solution, step, testLength, checkSolution, setSolution }}
           />
@@ -29,4 +29,4 @@ class LockScreen extends Component {
   }
 }
 
-export default LockScreen;
+export default Test;

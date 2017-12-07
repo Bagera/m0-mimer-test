@@ -1,4 +1,4 @@
-.LockScreen {
+.Test {
   display: grid;
   grid-template-columns: auto auto;
   grid-template-rows: 1fr;
@@ -6,15 +6,15 @@
   max-width: 1200px;
   margin: 0 auto;
 }
-.LockScreen-problem,
-.LockScreen-solution {
+.Test-problem,
+.Test-solution {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 @media (orientation: portrait) {
-  .LockScreen {
+  .Test {
     grid-gap: 2em;
     grid-template-rows: auto auto;
     grid-template-columns: 1fr;
