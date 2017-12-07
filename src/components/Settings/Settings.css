@@ -1,0 +1,10 @@
+.Settings {
+  font-size: 16px;
+  color: var(--c-light);
+}
+.Settings section {
+  margin: 2em 0;
+}
+.Settings p {
+  margin: 0 0 0.5em;
+}

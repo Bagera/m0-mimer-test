@@ -74,6 +74,19 @@ body,
   right: 1em;
 }
 
+button {
+  font-size: 1em;
+  line-height: 2;
+  border: 1px solid var(--c-brand-hl);
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
+  padding: 0 1em;
+  color: var(--c-brand-hl);
+  background-color: transparent;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), var(--c-light-li));
+}
+
 @media (orientation: landscape) {
   :root {
     --root-font: 1vh;
