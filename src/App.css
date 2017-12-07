@@ -1,0 +1,83 @@
+:root {
+  --c-brand-hl: rgb(135, 194, 209);
+  --c-brand-li: rgb(42, 130, 174);
+  --c-brand-da: rgb(11, 37, 50);
+
+  --c-light-li: rgba(255, 255, 255, 0.15);
+  --c-light: rgba(255, 255, 255, 0.65);
+
+  --c-dark-li: rgba(0, 0, 0, 0.25);
+  --c-dark: rgba(0, 0, 0, 0.5);
+
+  --c-positive: rgb(0, 182, 97);
+  --c-warning: rgb(182, 118, 0);
+  --c-danger: rgb(182, 0, 0);
+
+  --b-pad: 0.2em;
+  --b-space: 2em;
+
+  --root-font: 1vw;
+}
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-size: var(--root-font);
+  background: linear-gradient(180deg, var(--c-brand-li), var(--c-brand-da));
+}
+
+.App {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 48px 1fr;
+  height: 100vh;
+  width: 100vw;
+}
+
+.App-header {
+  background-color: var(--c-dark-li);
+  grid-column: span 2;
+  color: var(--c-light);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+
+.App-logo {
+  height: 80%;
+  width: auto;
+  opacity: 0.65;
+}
+
+.App-testName {
+  position: absolute;
+  right: 1em;
+}
+
+@media (orientation: landscape) {
+  :root {
+    --root-font: 1vh;
+  }
+}
+@media screen and (min-width: 768px) {
+  body {
+    font-size: 1.5vw;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  body {
+    font-size: 16px;
+  }
+}

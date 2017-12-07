@@ -1,0 +1,51 @@
+.Solution {
+  font-size: 2em;
+}
+.Solution-buttons {
+  margin: auto;
+}
+.Buttons {
+  margin: auto;
+}
+.Solution-counter,
+.Solution-action {
+  margin: 2em 0;
+  text-align: center;
+}
+.Solution-action {
+  margin: 4em 0 0 0;
+  text-align: center;
+}
+.Solution-action button {
+  font-size: 3.5em;
+  line-height: 2;
+  border: 1px solid var(--c-brand-hl);
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
+  padding: 0 1.5em;
+  color: var(--c-brand-hl);
+  background-color: transparent;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), var(--c-light-li));
+}
+@media (orientation: portrait) {
+  .Solution {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .Solution-action {
+    margin: 0 0 0 4em;
+  }
+  .Solution-action button {
+    padding: 0 0.5em;
+  }
+}
+@media (min-width: 768px) {
+  .Solution {
+    font-size: 1em;
+  }
+  .Solution-action button {
+    font-size: 1.75em;
+  }
+}

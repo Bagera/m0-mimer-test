@@ -1,0 +1,113 @@
+.SignBar {
+  --b-thick: calc(var(--b-pad) * 5);
+  --b-length: calc(var(--b-pad) * 40);
+  position: absolute;
+  background-color: var(--c-dark);
+  margin: 0;
+}
+.SignBar-active {
+  background-color: var(--c-brand-da);
+  border: 1px solid var(--c-brand-hl);
+  overflow: hidden;
+  z-index: 1;
+}
+.SignBar-active::after {
+  position: absolute;
+  content: '';
+  top: var(--b-pad);
+  right: var(--b-pad);
+  bottom: var(--b-pad);
+  left: var(--b-pad);
+  background-color: var(--c-brand-li);
+  filter: blur(calc(var(--b-pad) * 3));
+  z-index: 2;
+}
+
+.SignBar-1,
+.SignBar-2,
+.SignBar-6,
+.SignBar-7,
+.SignBar-11,
+.SignBar-12 {
+  height: var(--b-thick);
+  width: calc(50% - 1px);
+}
+.SignBar-3,
+.SignBar-4,
+.SignBar-5,
+.SignBar-8,
+.SignBar-9,
+.SignBar-10 {
+  height: calc(50% - var(--b-thick) * 1.5 - 4px);
+  width: var(--b-thick);
+}
+
+/* Top horizontal bars */
+.SignBar-1 {
+  top: 0;
+  left: 0;
+  border-top-left-radius: 1em;
+}
+.SignBar-2 {
+  top: 0;
+  right: 0;
+  border-top-right-radius: 1em;
+}
+
+/* Top vertical bars */
+.SignBar-3,
+.SignBar-4,
+.SignBar-5 {
+  top: calc(var(--b-thick) + 2px);
+}
+.SignBar-3 {
+  left: 0;
+}
+.SignBar-4 {
+  left: calc(50% - var(--b-thick) / 2);
+}
+.SignBar-5 {
+  right: 0;
+}
+
+/* Middle horizontal bars */
+.SignBar-6,
+.SignBar-7 {
+  top: calc(50% - var(--b-thick) / 2);
+}
+.SignBar-6 {
+  left: 0;
+}
+.SignBar-7 {
+  right: 0;
+}
+
+/* Bottom vertical bars */
+.SignBar-8,
+.SignBar-9,
+.SignBar-10 {
+  bottom: calc(var(--b-thick) + 2px);
+}
+.SignBar-8 {
+  left: 0;
+}
+.SignBar-9 {
+  left: calc(50% - var(--b-thick) / 2);
+}
+.SignBar-10 {
+  right: 0;
+}
+
+/* Bottom horizontal bars */
+.SignBar-11,
+.SignBar-12 {
+  bottom: 0;
+}
+.SignBar-11 {
+  left: 0;
+  border-bottom-left-radius: 1em;
+}
+.SignBar-12 {
+  right: 0;
+  border-bottom-right-radius: 1em;
+}

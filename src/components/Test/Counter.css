@@ -1,0 +1,30 @@
+.Counter {
+  width: 8em;
+  vertical-align: middle;
+}
+.Counter-progressBg {
+  fill: transparent;
+  stroke: rgba(0, 0, 0, 0.25);
+}
+.Counter-progress {
+  fill: transparent;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50% 0;
+  transition: all 0.5s;
+}
+.Counter-bg {
+  fill: rgba(0, 0, 0, 0.5);
+}
+.Counter-color {
+  opacity: 0.75;
+  transition: fill 0.5s;
+}
+.Counter-text {
+  font-size: 8em;
+  line-height: 1;
+  text-align: center;
+  text-anchor: middle;
+  dominant-baseline: bottom;
+  fill: rgba(0, 0, 0, 0.65);
+  font-weight: bold;
+}

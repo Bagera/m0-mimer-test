@@ -1,0 +1,29 @@
+.Problem {
+  --f-size: 1.5em;
+  font-size: var(--f-size);
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 2em;
+  justify-items: center;
+  flex: 1;
+  max-width: 55em;
+  max-height: 55em;
+}
+.Problem-missing {
+  height: 17em;
+  width: 17em;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+@media (min-width: 768px) {
+  .Problem {
+    --f-size: 0.8em;
+  }
+}
+@media (min-width: 1024px) {
+  .Problem {
+    --f-size: 0.625em;
+  }
+}
