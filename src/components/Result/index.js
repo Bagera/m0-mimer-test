@@ -9,9 +9,15 @@ class Result extends Component {
     };
   }
   componentDidMount() {
-    setTimeout(() => {
+    this.timeout = setTimeout(() => {
       this.setState({ calculated: true });
     }, 4250);
+  }
+  componentWillUnmount() {
+    if (this.timeout) {
+      clearTimeout(this.timeout);
+      this.timeout = null;
+    }
   }
   render() {
     const { status } = this.props;

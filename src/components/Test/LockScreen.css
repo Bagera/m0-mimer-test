@@ -2,7 +2,9 @@
   display: grid;
   grid-template-columns: 3fr 2fr;
   grid-template-rows: 1fr;
-  grid-gap: 0.5em;
+  grid-gap: 2em;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .LockScreen-problem,
 .LockScreen-solution {

@@ -45,6 +45,16 @@ class App extends Component {
     }
   }
 
+  reset() {
+    const newState = {
+      tries: maxTries,
+      status: 'testing',
+      solution: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      problem: SignUtils.problem()
+    };
+    this.setState(newState);
+  }
+
   render() {
     const { solution, problem, tries, status } = this.state;
     const checkSolution = this.checkSolution.bind(this);
@@ -78,9 +88,14 @@ class App extends Component {
             className="App-logo"
             src={logo}
             alt="Logo"
-            onClick={this.toggleFullScreen.bind(this)}
+            onClick={this.reset.bind(this)}
           />
-          <span className="App-testName">MIT-4592</span>
+          <span
+            className="App-testName"
+            onClick={this.toggleFullScreen.bind(this)}
+          >
+            MIT-4592
+          </span>
         </header>
         {component}
       </main>
