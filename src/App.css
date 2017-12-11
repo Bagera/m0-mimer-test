@@ -67,11 +67,17 @@ body,
   height: 80%;
   width: auto;
   opacity: 0.65;
+  cursor: pointer;
 }
 
 .App-testName {
   position: absolute;
-  right: 1em;
+  font-size: 1em;
+  line-height: 1em;
+  padding: 0.5em;
+  right: 0.5em;
+  top: calc(50% - 1em);
+  cursor: pointer;
 }
 
 button {
