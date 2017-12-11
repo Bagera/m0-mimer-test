@@ -93,6 +93,7 @@ class App extends Component {
       this.setState(oldState);
     } else {
       const state = this.reset();
+      this.setState(state);
     }
   }
 
