@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import './Settings.css';
 
+import Button from '../Button';
+
+const lengths = [1, 3, 5];
+
 class Settings extends Component {
   render() {
     const { testLength, setLength, toggleFullscreen, close } = this.props;
@@ -10,18 +14,29 @@ class Settings extends Component {
         <section>
           <p>Teststeg:</p>
           <div className="Settings-buttonGroup">
-            <button onClick={setLength.bind(this, 1)}>1</button>
-            <button onClick={setLength.bind(this, 3)}>3</button>
-            <button onClick={setLength.bind(this, 5)}>5</button>
+            {lengths.map(count => {
+              return (
+                <Button
+                  inactive={count !== testLength}
+                  onClick={setLength.bind(this, count)}
+                >
+                  {count}
+                </Button>
+              );
+            })}
           </div>
         </section>
         <section>
           <p>Fullskärm:</p>
-          <button onClick={toggleFullscreen.bind(this)}>Toggla</button>
+          <Button type="button" onClick={toggleFullscreen.bind(this)}>
+            Toggla
+          </Button>
         </section>
 
         <section>
-          <button onClick={close.bind(this)}>Stäng</button>
+          <Button type="button" onClick={close.bind(this)}>
+            Stäng
+          </Button>
         </section>
       </div>
     );

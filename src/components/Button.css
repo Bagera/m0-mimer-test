@@ -1,0 +1,18 @@
+.Button {
+  font-size: 1em;
+  line-height: 2;
+  border: 1px solid var(--c-brand-hl);
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
+  padding: 0 1em;
+  color: var(--c-brand-hl);
+  background-color: transparent;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), var(--c-light-li));
+}
+
+.Button-inactive {
+  border-color: var(--c-brand-hl);
+  color: var(--c-brand-hl);
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+}

@@ -3,6 +3,7 @@ import './Solution.css';
 
 import Counter from './Counter';
 import Buttons from './Buttons';
+import Button from '../Button';
 
 class Solution extends Component {
   handleToggle(index) {
@@ -34,9 +35,9 @@ class Solution extends Component {
         <aside className="Solution-aside">
           {counter}
           <div className="Solution-action">
-            <button type="button" onClick={checkSolution.bind(this, solution)}>
+            <Button type="button" onClick={checkSolution.bind(this, solution)}>
               Svara
-            </button>
+            </Button>
           </div>
         </aside>
       </div>
