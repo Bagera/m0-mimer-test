@@ -10,6 +10,7 @@ import Result from './components/Result';
 import './App.css';
 
 import logo from './logo.svg';
+const clickSound = new Audio(process.env.PUBLIC_URL + 'audio/toggle.mp3');
 
 class App extends Component {
   constructor() {
@@ -38,6 +39,8 @@ class App extends Component {
 
   toggleSettings() {
     const settingsOpen = !this.state.settingsOpen;
+    clickSound.currentTime = 0;
+    clickSound.play();
     this.setState({ settingsOpen });
   }
 

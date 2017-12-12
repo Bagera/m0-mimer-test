@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import './Result.css';
 
+const audio = {
+  calculate: new Audio(process.env.PUBLIC_URL + 'audio/calculate.mp3'),
+  success: new Audio(process.env.PUBLIC_URL + 'audio/success.mp3'),
+  failure: new Audio(process.env.PUBLIC_URL + 'audio/failure.mp3')
+};
+
 class Result extends Component {
   constructor() {
     super();
@@ -9,11 +15,23 @@ class Result extends Component {
     };
   }
   componentDidMount() {
+    const { status } = this.props;
+    audio.calculate.currentTime = 0;
+    audio.calculate.play();
     this.timeout = setTimeout(() => {
       this.setState({ calculated: true });
+      audio.calculate.pause();
+      if (status === 'solved') {
+        audio.success.currentTime = 0;
+        audio.success.play();
+      } else {
+        audio.failure.currentTime = 0;
+        audio.failure.play();
+      }
     }, 4250);
   }
   componentWillUnmount() {
+    audio.calculate.pause();
     if (this.timeout) {
       clearTimeout(this.timeout);
       this.timeout = null;
