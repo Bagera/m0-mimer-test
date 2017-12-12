@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import {
+  faUndo,
+  faTimesCircle,
+  faExpand
+} from '@fortawesome/fontawesome-pro-regular';
 import './Settings.css';
 
 import Button from '../Button';
@@ -34,19 +40,19 @@ class Settings extends Component {
           </div>
           <p>Återställ test:</p>
           <Button type="button" onClick={resetTest.bind(this)}>
-            Börja om
+            <FontAwesomeIcon icon={faUndo} /> Börja om
           </Button>
         </section>
         <section>
           <p>Fullskärm:</p>
           <Button type="button" onClick={toggleFullscreen.bind(this)}>
-            Toggla
+            <FontAwesomeIcon icon={faExpand} /> Expandera
           </Button>
         </section>
 
-        <section>
+        <section className="Settings-section-close">
           <Button type="button" onClick={close.bind(this)}>
-            Stäng
+            <FontAwesomeIcon icon={faTimesCircle} /> Stäng
           </Button>
         </section>
       </div>

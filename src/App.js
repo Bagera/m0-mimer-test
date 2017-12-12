@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { faCogs } from '@fortawesome/fontawesome-pro-regular';
 import Screenfull from 'screenfull';
 import SignUtils from './lib/SignUtils';
 
@@ -13,7 +15,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      testLength: 1
+      testLength: 1,
+      settingsOpen: false
     };
   }
 
@@ -68,7 +71,6 @@ class App extends Component {
       step: 1,
       points: 0,
       status: 'testing',
-      settingsOpen: false,
       solution: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       problem: SignUtils.problem()
     };
@@ -158,7 +160,7 @@ class App extends Component {
             className="App-testName"
             onClick={this.toggleSettings.bind(this)}
           >
-            MIT-4592
+            MIT-4592 <FontAwesomeIcon icon={faCogs} />
           </span>
         </header>
         {component}
