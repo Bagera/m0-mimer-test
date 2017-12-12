@@ -114,6 +114,7 @@ class App extends Component {
       component = (
         <Settings
           testLength={testLength}
+          resetTest={this.reset.bind(this)}
           toggleFullscreen={this.toggleFullscreen.bind(this)}
           setLength={this.setLength.bind(this)}
           close={this.toggleSettings.bind(this)}

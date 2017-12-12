@@ -7,7 +7,13 @@ const lengths = [1, 3, 5];
 
 class Settings extends Component {
   render() {
-    const { testLength, setLength, toggleFullscreen, close } = this.props;
+    const {
+      testLength,
+      setLength,
+      resetTest,
+      toggleFullscreen,
+      close
+    } = this.props;
 
     return (
       <div className="Settings">
@@ -17,6 +23,7 @@ class Settings extends Component {
             {lengths.map(count => {
               return (
                 <Button
+                  key={'button-' + count}
                   inactive={count !== testLength}
                   onClick={setLength.bind(this, count)}
                 >
@@ -25,6 +32,10 @@ class Settings extends Component {
               );
             })}
           </div>
+          <p>Återställ test:</p>
+          <Button type="button" onClick={resetTest.bind(this)}>
+            Börja om
+          </Button>
         </section>
         <section>
           <p>Fullskärm:</p>
