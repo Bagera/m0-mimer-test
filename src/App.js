@@ -21,6 +21,28 @@ class App extends Component {
     };
   }
 
+  newState(oldState = {}) {
+    const newState = {
+      step: 1,
+      points: 0,
+      status: 'testing',
+      solution: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      problem: SignUtils.problem()
+    };
+    return Object.assign({}, newState, oldState);
+  }
+
+  getState() {
+    return JSON.parse(localStorage.getItem('data'));
+  }
+
+  saveState(state) {
+    this.setState(state);
+    const store = this.getState();
+    const newStore = Object.assign({}, store, state);
+    localStorage.setItem('data', JSON.stringify(newStore));
+  }
+
   checkSolution(answer) {
     const problem = this.state.problem[2];
     return SignUtils.checkAnswer(...problem, answer);
@@ -34,13 +56,15 @@ class App extends Component {
   }
 
   setSolution(solution) {
-    this.setState({ solution });
+    this.saveState({ solution });
   }
 
-  toggleSettings() {
+  toggleSettings(mute) {
     const settingsOpen = !this.state.settingsOpen;
-    clickSound.currentTime = 0;
-    clickSound.play();
+    if (!mute) {
+      clickSound.currentTime = 0;
+      clickSound.play();
+    }
     this.setState({ settingsOpen });
   }
 
@@ -59,47 +83,23 @@ class App extends Component {
       }
     }
     step++;
-    problem = SignUtils.problem();
-    const solution = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    this.setState({ step, problem, points, status, solution });
+    const newState = this.newState({ step, points, status });
+    this.saveState(newState);
   }
 
   setLength(testLength) {
-    this.setState({ testLength });
-    this.storeData({ testLength });
+    const newState = this.newState({ testLength });
+    this.saveState(newState);
   }
 
   reset() {
-    const newState = {
-      step: 1,
-      points: 0,
-      status: 'testing',
-      solution: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      problem: SignUtils.problem()
-    };
-    this.setState(newState);
-    this.storeData(newState);
+    const newState = this.newState({ settingsOpen: false });
+    this.saveState(newState);
     return newState;
   }
 
-  getStoredState() {
-    return JSON.parse(localStorage.getItem('data'));
-  }
-
-  storeData(data) {
-    const store = this.getStoredState();
-    const newStore = Object.assign({}, store, data);
-    localStorage.setItem('data', JSON.stringify(newStore));
-  }
-
   componentWillMount() {
-    const oldState = this.getStoredState();
-    if (oldState) {
-      this.setState(oldState);
-    } else {
-      const state = this.reset();
-      this.setState(state);
-    }
+    this.setState(this.newState(this.getState()));
   }
 
   render() {
@@ -122,7 +122,7 @@ class App extends Component {
           resetTest={this.reset.bind(this)}
           toggleFullscreen={this.toggleFullscreen.bind(this)}
           setLength={this.setLength.bind(this)}
-          close={this.toggleSettings.bind(this)}
+          close={this.toggleSettings.bind(this, true)}
         />
       );
     } else {
@@ -157,11 +157,10 @@ class App extends Component {
             className="App-logo"
             src={logo}
             alt="Logo"
-            onClick={this.reset.bind(this)}
           />
           <span
             className="App-testName"
-            onClick={this.toggleSettings.bind(this)}
+            onClick={this.toggleSettings.bind(this, false)}
           >
             MIT-4592 <FontAwesomeIcon icon={faCogs} />
           </span>
