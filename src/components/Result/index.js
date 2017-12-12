@@ -6,6 +6,18 @@ const audio = {
   success: new Audio(process.env.PUBLIC_URL + 'audio/success.mp3'),
   failure: new Audio(process.env.PUBLIC_URL + 'audio/failure.mp3')
 };
+const text = {
+  title: {
+    loading: "Utvärderar",
+    success: "Utvärdering avslutad",
+    failure: "Utvärdering avslutad"
+  },
+  msg: {
+    loading: "Väntar på svar",
+    success: "Status 57: Vissa tecken på mänsklig intelligens",
+    failure: "Status 83: Intelligens kan ej fastslås"
+  }
+}
 
 class Result extends Component {
   constructor() {
@@ -41,16 +53,16 @@ class Result extends Component {
     const { status } = this.props;
     const { calculated } = this.state;
     let className = 'Result';
-    let title = 'Utvärderar';
-    let msg = 'Väntar på svar';
+    let title = text.title.loading;
+    let msg = text.msg.loading;
     if (calculated) {
-      title = 'Utvärdering avslutad';
+      title = text.title.success;
       className += ' Result-calculated';
       if (status === 'solved') {
-        msg = 'Status 57: Tecken på mänsklig intelligens';
+        msg = text.msg.success;
         className += ' Result-solved';
       } else {
-        msg = 'Status 83: Intelligens kan ej fastslås';
+        msg = text.msg.failure;
         className += ' Result-failed';
       }
     }
